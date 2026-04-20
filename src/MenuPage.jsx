@@ -1,10 +1,12 @@
 import './App.css'
 import './MenuPage.css'
+import Header from './components/Header'
 import { menuSections, menuSupportingCards } from './menuData'
 
 const navigation = [
-  { label: 'Home', href: '/' },
+  { label: 'Brunch', href: '/#experiences' },
   { label: 'Menu', href: '#menu-list' },
+  { label: 'Cakes', href: '/#cakes' },
   { label: 'Visit', href: '#visit' },
 ]
 
@@ -29,32 +31,12 @@ const slugify = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').repla
 function MenuPage() {
   return (
     <div className="site-shell menu-page-shell">
-      <header className="site-header menu-page-header">
-        <a className="brand" href="/" aria-label="MALINA Patisserie home">
-          <span className="brand-mark">MALINA</span>
-          <span className="brand-subtitle">Patisserie</span>
-        </a>
-
-        <nav className="site-nav" aria-label="Primary">
-          {navigation.map((item) => (
-            <a key={item.href} href={item.href}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <a
-          className="button button-outline"
-          href="https://www.instagram.com/malinapatisserie/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Instagram
-        </a>
-      </header>
+      <Header navigation={navigation} />
 
       <main className="menu-page-main">
-        <section className="menu-page-hero" id="top">
+        <div id="top" aria-hidden="true" />
+
+        <section className="menu-page-hero">
           <img
             className="menu-page-hero-image"
             src="/food/cake-coffee-coffeeMachine+Entrance.jpg"
