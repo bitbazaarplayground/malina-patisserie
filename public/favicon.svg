@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MALINA favicon">
+  <rect width="64" height="64" rx="14" fill="#111018" />
+  <circle cx="47" cy="17" r="7" fill="#7ed7b5" />
+  <path
+    d="M14 47V17h7l11 18 11-18h7v30h-7V30L35 44h-6L21 30v17z"
+    fill="#fff7fa"
+  />
+  <path
+    d="M14 49h36"
+    stroke="#ffd166"
+    stroke-linecap="round"
+    stroke-width="3"
+  />
+</svg>
