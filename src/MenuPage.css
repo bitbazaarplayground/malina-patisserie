@@ -1,0 +1,137 @@
+.menu-page-shell {
+  min-height: 100svh;
+}
+
+.menu-page-main {
+  padding-bottom: 32px;
+}
+
+.menu-page-hero {
+  position: relative;
+  min-height: 78svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: clip;
+}
+
+.menu-page-hero-image,
+.menu-page-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.menu-page-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+  filter: brightness(0.56) saturate(0.92);
+}
+
+.menu-page-hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(7, 12, 9, 0.86) 14%, rgba(7, 12, 9, 0.48) 54%, rgba(29, 10, 18, 0.66) 100%),
+    linear-gradient(180deg, rgba(7, 12, 9, 0.16) 0%, rgba(7, 12, 9, 0.8) 100%);
+}
+
+.menu-page-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 190px 0 82px;
+}
+
+.menu-page-hero-content h1 {
+  max-width: 860px;
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 82px;
+  line-height: 0.96;
+  color: #fff7f2;
+}
+
+.menu-page-hero-copy {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: rgba(245, 238, 232, 0.82);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.menu-page-jump-band {
+  padding: 30px 0 0;
+}
+
+.menu-page-jump-layout {
+  display: grid;
+  gap: 16px;
+}
+
+.menu-page-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.menu-page-jumps a {
+  padding: 12px 16px;
+  border: 1px solid rgba(245, 238, 232, 0.12);
+  border-radius: 999px;
+  background: rgba(245, 238, 232, 0.04);
+  color: #f5eee8;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.menu-page-jumps a:hover,
+.menu-page-jumps a:focus-visible {
+  border-color: rgba(245, 238, 232, 0.24);
+  color: #ffffff;
+}
+
+.menu-page-section .menu-category {
+  scroll-margin-top: 118px;
+}
+
+.menu-page-visit {
+  padding-top: 0;
+}
+
+@media (max-width: 1120px) {
+  .menu-page-hero-content h1 {
+    font-size: 66px;
+  }
+}
+
+@media (max-width: 840px) {
+  .menu-page-hero {
+    min-height: 70svh;
+  }
+
+  .menu-page-hero-content {
+    padding-top: 214px;
+  }
+
+  .menu-page-hero-content h1 {
+    font-size: 52px;
+  }
+}
+
+@media (max-width: 560px) {
+  .menu-page-hero {
+    min-height: 68svh;
+  }
+
+  .menu-page-hero-content {
+    padding-top: 184px;
+    padding-bottom: 46px;
+  }
+
+  .menu-page-hero-content h1 {
+    font-size: 40px;
+  }
+
+  .menu-page-hero-copy {
+    font-size: 16px;
+  }
+}
