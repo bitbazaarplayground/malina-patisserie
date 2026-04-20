@@ -1,64 +1,117 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
+import { drinksSelection } from './menuData'
 
 const navigation = [
-  { label: 'House', href: '#house' },
+  { label: 'Offering', href: '#offering' },
+  { label: 'Menu', href: '/menu/' },
   { label: 'Experiences', href: '#experiences' },
-  { label: 'Gallery', href: '#gallery' },
+  { label: 'Cakes', href: '#cakes' },
   { label: 'Visit', href: '#visit' },
 ]
 
 const experiences = [
   {
     id: '01',
-    title: 'Morning salon',
-    subtitle: 'Brunch that feels dressed for the occasion',
+    title: 'All-day brunch',
+    subtitle: 'A menu built for proper sit-down mornings and unhurried afternoons',
     copy:
-      'Signature eggs, polished plates, strong coffee, and a room that turns an ordinary morning into a destination plan.',
-    image:
-      'https://images.unsplash.com/photo-1559329007-40df8a9345d8?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Elegant brunch table with pastries, coffee, and refined plating',
+      'Shakshuka, English Breakfast Our Way, Potato Fritters with Salmon, Halloumi Bowl, poke bowls, and signature toast plates give MALINA a real brunch identity, not just a cafe feel.',
+    image: '/food/artichoke-poachedEgg.jpg',
+    alt: 'MALINA brunch plate with poached eggs, herbs, and toast',
   },
   {
     id: '02',
-    title: 'Patisserie atelier',
-    subtitle: 'Handmade cakes and desserts with centre-stage presence',
+    title: 'Coffee, teas, smoothies, and lighter favourites',
+    subtitle: 'A drinks menu people can actually choose from, not a token side note',
     copy:
-      'Honey cake, macarons, celebration orders, and pastries that deserve more than a corner counter moment.',
-    image:
-      'https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Luxury plated desserts and pastries in a softly lit setting',
+      'Latte, cappuccino, flat white, cortado, espresso, americano, mocha, hot chocolate, matcha latte, green tea, white tea, black tea, flower tea, smoothies, shakes, and juices sit alongside toast favourites, salads, pancakes, and easy daytime plates.',
+    image: '/food/mochaCoffee.jpg',
+    alt: 'MALINA mocha coffee topped with cream and chocolate drizzle',
   },
   {
     id: '03',
-    title: 'Afternoon rituals',
-    subtitle: 'Tea, private dining, birthdays, and the slower linger',
+    title: 'Daily-made sweets and celebration cakes',
+    subtitle: "A counter that changes, plus cakes people order for life's better moments",
     copy:
-      'The more elevated MALINA becomes, the easier it is to own celebrations, gifting, and the kind of visits people photograph before the first sip.',
-    image:
-      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Refined dining room with moody lighting and lush atmosphere',
+      'Desserts are made daily and the counter changes with the day, which keeps the counter feeling alive. Alongside that, celebration cakes can cover birthdays, gatherings, gifting, and simple excuses to celebrate life.',
+    image: '/food/sliceCake.jpg',
+    alt: 'MALINA layered cake slice with berries on a plate',
   },
 ]
 
 const houseNotes = [
-  'Award-winning Brentwood hospitality',
-  'French desserts, brunch, afternoon tea',
-  'Colour, intimacy, and a more cinematic room',
+  'All-day brunch in Brentwood',
+  'Coffee, matcha, tea, smoothies, shakes, and juices',
+  'Daily desserts and celebration cakes',
 ]
 
-const galleryImages = [
+const offeringCards = [
   {
-    src: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Moody luxury restaurant interior with warm lighting',
+    title: 'Brunch',
+    copy: 'Shakshuka, English Breakfast Our Way, Chorizo and Padron Frittata, Potato Fritters with Salmon, Halloumi Bowl, and more served all day.',
   },
   {
-    src: 'https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Cocktails and desserts on a dramatic restaurant table',
+    title: 'Coffee',
+    copy: 'Latte, cappuccino, flat white, cortado, espresso, americano, mocha, hot chocolate, matcha latte, green, white, black, and flower teas, plus smoothies, shakes, and juices.',
   },
   {
-    src: 'https://images.unsplash.com/photo-1559622214-f8a9850965bb?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Beautiful pastry and cake display with rich colours',
+    title: 'Dessert speciality',
+    copy: 'The sweet offering changes daily, which is part of the charm. The counter should feel fresh, handmade, and worth checking again tomorrow.',
+  },
+  {
+    title: 'Celebration cakes',
+    copy: 'Birthday cakes, milestone cakes, and cakes ordered simply to celebrate life should feel like a natural extension of the restaurant and patisserie.',
+  },
+]
+
+const menuPreviewCards = [
+  {
+    title: 'Signature brunch',
+    copy:
+      'Shakshuka, English Breakfast Our Way, Potato Fritters with Salmon, poke bowls, and favourite brunch plates served all day.',
+  },
+  {
+    title: 'Toast, salads, and lighter plates',
+    copy:
+      'Village Chanterelles, Avocado Feta & Crispy Bacon, salads, toasties, soup of the day, and easy daytime favourites.',
+  },
+  {
+    title: 'Coffee and drinks',
+    copy:
+      'Coffee, matcha, teas, smoothies, shakes, and fresh juices for slower mornings, quick stops, and afternoon catch-ups.',
+  },
+  {
+    title: 'Daily desserts and cakes',
+    copy:
+      'A changing dessert counter, layered cake slices, macarons, and celebration cakes made for birthdays, gatherings, and gifting.',
+  },
+]
+
+const cakeMoments = [
+  {
+    src: '/food/sliceCake.jpg',
+    alt: 'MALINA cake slice with berries and cream filling',
+    title: 'Daily cake counter',
+    copy: 'Fresh slices, layered cakes, and daily-made desserts give people a reason to come back often.',
+  },
+  {
+    src: '/food/macarons.jpg',
+    alt: 'MALINA macarons with caramel filling',
+    title: 'Signature sweet details',
+    copy: 'Macarons and patisserie details help MALINA feel handmade, giftable, and visually memorable.',
+  },
+  {
+    src: '/food/cake-coffee-coffeeMachine+Entrance.jpg',
+    alt: 'MALINA cake and coffee beside the coffee machine and counter',
+    title: 'Coffee and cake moments',
+    copy: 'The counter should sell the ritual too: choose dessert, add coffee, stay a little longer.',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Elegant frosted celebration cake with floral styling',
+    title: 'Milestones and gatherings',
+    copy: 'Baby showers, dinner parties, thank-yous, and all the reasons people want something beautiful.',
   },
 ]
 
@@ -70,21 +123,6 @@ const visitDetails = [
   { day: 'Friday', hours: '9:00 - 16:00' },
   { day: 'Saturday', hours: '9:00 - 16:00' },
   { day: 'Sunday', hours: '9:00 - 15:00' },
-]
-
-const introIngredients = [
-  { id: 1, type: 'petal', left: '7%', duration: 2.9, delay: 0.1, scale: 1.15, drift: '-28px', spin: 18 },
-  { id: 2, type: 'berry', left: '14%', duration: 3.2, delay: 0.3, scale: 0.94, drift: '20px', spin: 42 },
-  { id: 3, type: 'pistachio', left: '23%', duration: 2.6, delay: 0.15, scale: 1, drift: '-16px', spin: -16 },
-  { id: 4, type: 'crumb', left: '31%', duration: 2.8, delay: 0.5, scale: 1.05, drift: '24px', spin: 30 },
-  { id: 5, type: 'petal', left: '39%', duration: 3.1, delay: 0.2, scale: 1.1, drift: '-20px', spin: -10 },
-  { id: 6, type: 'sugar', left: '48%', duration: 2.5, delay: 0.4, scale: 0.9, drift: '12px', spin: 12 },
-  { id: 7, type: 'berry', left: '56%', duration: 3.3, delay: 0.55, scale: 1.08, drift: '-18px', spin: 26 },
-  { id: 8, type: 'pistachio', left: '65%', duration: 2.7, delay: 0.05, scale: 1, drift: '18px', spin: -24 },
-  { id: 9, type: 'petal', left: '73%', duration: 3, delay: 0.35, scale: 0.98, drift: '-12px', spin: 14 },
-  { id: 10, type: 'crumb', left: '82%', duration: 2.85, delay: 0.18, scale: 1.1, drift: '22px', spin: -34 },
-  { id: 11, type: 'sugar', left: '88%', duration: 2.4, delay: 0.45, scale: 0.82, drift: '-10px', spin: 20 },
-  { id: 12, type: 'berry', left: '93%', duration: 3.15, delay: 0.25, scale: 0.9, drift: '14px', spin: -18 },
 ]
 
 const INTRO_STORAGE_KEY = 'malina_intro_seen'
@@ -207,30 +245,13 @@ function App() {
           />
           <div className="site-intro-overlay" aria-hidden="true" />
 
-          <div className="site-intro-ingredients" aria-hidden="true">
-            {introIngredients.map((ingredient) => (
-              <span
-                key={ingredient.id}
-                className={`intro-ingredient intro-ingredient-${ingredient.type}`}
-                style={{
-                  '--ingredient-left': ingredient.left,
-                  '--ingredient-duration': `${ingredient.duration}s`,
-                  '--ingredient-delay': `${ingredient.delay}s`,
-                  '--ingredient-scale': ingredient.scale,
-                  '--ingredient-drift': ingredient.drift,
-                  '--ingredient-spin': `${ingredient.spin}deg`,
-                }}
-              />
-            ))}
-          </div>
-
           <div className="site-intro-content">
             <p className="site-intro-kicker">Brentwood, Essex</p>
             <p className="site-intro-title">
               <span>MALINA</span>
               <span>Patisserie</span>
             </p>
-            <p className="site-intro-copy">Handmade patisserie. Celebration energy.</p>
+            <p className="site-intro-copy">Brunch. Coffee. Desserts. Celebration cakes.</p>
           </div>
 
           <button className="site-intro-skip" type="button" onClick={dismissIntro}>
@@ -267,22 +288,25 @@ function App() {
         <section className="hero-section" id="top">
           <img
             className="hero-image"
-            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80"
-            alt="Luxury restaurant interior with dramatic warm lighting"
+            src="/sittingArea-1200.webp"
+            srcSet="/sittingArea-400.webp 400w, /sittingArea-1200.webp 510w"
+            sizes="100vw"
+            alt="MALINA restaurant seating area with blue banquette seating and warmly lit tables"
+            fetchPriority="high"
           />
           <div className="hero-overlay" aria-hidden="true" />
 
           <div className="section-inner hero-content">
             <p className="eyebrow">Brentwood, Essex</p>
-            <h1>A richer, more seductive side of MALINA.</h1>
+            <h1>Brunch, coffee, desserts, and cakes worth planning around.</h1>
             <p className="hero-copy">
-              Less daytime cafe. More destination room. Handmade patisserie, elevated brunch, and
-              celebration energy in a setting designed to feel cinematic from the street.
+              A Brentwood brunch restaurant and patisserie for slow mornings, coffee pauses,
+              dessert cravings, and cakes made for birthdays or simply celebrating life.
             </p>
 
             <div className="hero-actions">
-              <a className="button button-solid" href="#visit">
-                Plan your visit
+              <a className="button button-solid" href="/menu/">
+                View full menu
               </a>
               <a className="button button-outline" href="mailto:malinapatisserie@gmail.com">
                 Cake and events
@@ -297,39 +321,95 @@ function App() {
           </div>
         </section>
 
-        <section className="intro-section" id="house">
+        <section className="intro-section" id="offering">
           <div className="section-inner intro-layout">
             <div className="intro-copy">
-              <p className="eyebrow eyebrow-accent">The House</p>
-              <h2>What to borrow from the luxury restaurant world</h2>
+              <p className="eyebrow eyebrow-accent">The Offering</p>
+              <h2>Everything the business needs to say, clearly.</h2>
               <p>
-                The Amazónico reference points in a smart direction: darker atmosphere, fuller
-                sensory pull, stronger imagery, and a layout that feels like entering a venue rather
-                than scanning a list of services.
+                A Brentwood address for all-day brunch, beautifully made coffee, daily desserts,
+                and cakes ordered for birthdays, gatherings, and life's smaller excuses.
               </p>
               <p>
-                For MALINA, that means blending colour and patisserie charm with a deeper mood,
-                better pacing, and more confidence in the room itself.
+                Settle in for a slower morning, drop in for coffee and something sweet, or plan
+                ahead for a cake that turns a good day into an occasion.
               </p>
             </div>
 
             <div className="intro-panel">
               <img
-                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80"
-                alt="Elegant restaurant table with dramatic ambient light"
+                src="/food/avocadoFeta-crispyBacon.jpg"
+                alt="MALINA avocado toast with salmon and poached eggs"
               />
               <div className="intro-panel-copy">
-                <p>Luxury does not need to mean cold.</p>
-                <strong>It should feel lush, intimate, and worth dressing up for.</strong>
+                <p>Come for brunch. Stay for daily-made sweets.</p>
+                <strong>Leave with coffee, cake, or both.</strong>
               </div>
             </div>
+          </div>
+
+          <div className="section-inner offering-grid">
+            {offeringCards.map((item) => (
+              <article key={item.title} className="offering-card">
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="section-inner drinks-band">
+            <div className="drinks-band-copy">
+              <p className="eyebrow">Coffee and Drinks</p>
+              <h3>Hot coffees, teas, matcha, smoothies, shakes, and juices.</h3>
+              <p>
+                Enough choice for a quick coffee stop, a slower catch-up, or the easy extra that
+                turns brunch into a longer stay.
+              </p>
+            </div>
+
+            <div className="drinks-tag-cloud" aria-label="MALINA coffee and drinks selection">
+              {drinksSelection.map((drink) => (
+                <span key={drink}>{drink}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="menu-preview-section">
+          <div className="section-inner menu-preview-layout">
+            <div className="menu-preview-copy">
+              <p className="eyebrow">Full Menu</p>
+              <h2>Signature brunch, lighter plates, coffee, drinks, and daily sweets.</h2>
+              <p className="section-support">
+                Browse the full menu before you visit, from all-day brunch and toast favourites to
+                smoothies, juices, and the daily dessert counter.
+              </p>
+            </div>
+
+            <div className="menu-preview-actions">
+              <a className="button button-solid" href="/menu/">
+                Browse the full menu
+              </a>
+              <a className="button button-outline" href="#visit">
+                Plan your visit
+              </a>
+            </div>
+          </div>
+
+          <div className="section-inner menu-preview-grid">
+            {menuPreviewCards.map((item) => (
+              <article key={item.title} className="menu-preview-card">
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))}
           </div>
         </section>
 
         <section className="experiences-section" id="experiences">
           <div className="section-inner experiences-heading">
-            <p className="eyebrow">Experiences</p>
-            <h2>Designed like chapters, not boxes.</h2>
+            <p className="eyebrow">Daily reasons to visit</p>
+            <h2>From all-day brunch to a changing dessert counter.</h2>
           </div>
 
           {experiences.map((experience, index) => (
@@ -353,17 +433,25 @@ function App() {
           ))}
         </section>
 
-        <section className="gallery-section" id="gallery">
+        <section className="gallery-section" id="cakes">
           <div className="section-inner gallery-header">
-            <p className="eyebrow eyebrow-accent">Atmosphere</p>
-            <h2>More drama. Better restraint. Stronger memory.</h2>
+            <p className="eyebrow eyebrow-accent">Cakes</p>
+            <h2>Birthday cakes, milestone cakes, and cakes made simply to celebrate life.</h2>
+            <p className="section-support">
+              From birthdays and baby showers to dinner parties and thank-yous, cakes are made for
+              the moments worth marking.
+            </p>
           </div>
 
-          <div className="gallery-strip" aria-label="MALINA visual gallery">
-            {galleryImages.map((image) => (
-              <figure key={image.src} className="gallery-frame">
+          <div className="gallery-strip" aria-label="MALINA cake offering">
+            {cakeMoments.map((image) => (
+              <article key={image.src} className="gallery-frame">
                 <img src={image.src} alt={image.alt} />
-              </figure>
+                <div className="gallery-copy-panel">
+                  <h3>{image.title}</h3>
+                  <p>{image.copy}</p>
+                </div>
+              </article>
             ))}
           </div>
         </section>
