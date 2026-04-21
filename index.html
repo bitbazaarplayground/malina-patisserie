@@ -2,14 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=malina" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="MALINA Patisserie in Brentwood, Essex. All-day brunch, coffee, daily desserts, and celebration cakes in a colourful destination restaurant and cafe."
     />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="MALINA Patisserie | Brunch, Coffee and Cakes in Brentwood"
+    />
+    <meta
+      property="og:description"
+      content="All-day brunch, coffee, daily desserts, and celebration cakes at MALINA Patisserie in Brentwood, Essex."
+    />
     <meta name="theme-color" content="#0b0a10" />
     <title>MALINA Patisserie | Brunch, Coffee and Cakes in Brentwood</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["Restaurant", "CafeOrCoffeeShop", "Bakery"],
+        "@id": "#malina-patisserie",
+        "name": "MALINA Patisserie",
+        "description": "A Brentwood patisserie and brunch restaurant serving all-day brunch, coffee, daily desserts, and celebration cakes.",
+        "telephone": "+447366695384",
+        "email": "malinapatisserie@gmail.com",
+        "priceRange": "££",
+        "servesCuisine": ["Brunch", "Coffee", "Patisserie", "Desserts"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "45 Kings Road",
+          "addressLocality": "Brentwood",
+          "postalCode": "CM14 4DJ",
+          "addressCountry": "GB"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:00",
+            "closes": "16:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "09:00",
+            "closes": "15:00"
+          }
+        ],
+        "sameAs": ["https://www.instagram.com/malinapatisserie/"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

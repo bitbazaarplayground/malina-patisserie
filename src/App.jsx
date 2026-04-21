@@ -1,13 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import { drinksSelection } from "./menuData";
+import Footer from "./components/Footer";
+import CoffeeDrinks from "./components/home/CoffeeDrinks";
 
 const navigation = [
-  { label: "Brunch", href: "#experiences" },
+  { label: "Brunch", href: "/?intro=skip#experiences" },
   { label: "Menu", href: "/menu/" },
-  { label: "Cakes", href: "#cakes" },
+  { label: "Cakes", href: "/cakes/" },
   { label: "Visit", href: "#visit" },
+];
+
+const footerLinks = [
+  { label: "Menu", href: "/menu/" },
+  { label: "Cakes", href: "/cakes/" },
+  { label: "Visit", href: "#visit" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/malinapatisserie/",
+  },
 ];
 
 const experiences = [
@@ -17,7 +28,7 @@ const experiences = [
     subtitle:
       "A menu built for proper sit-down mornings and unhurried afternoons",
     copy: "Shakshuka, English Breakfast Our Way, Potato Fritters with Salmon, Halloumi Bowl, poke bowls, and signature toast plates give MALINA a real brunch identity, not just a cafe feel.",
-    image: "/food/artichoke-poachedEgg.jpg",
+    image: "/food/artichoke-poachedEgg.webp",
     alt: "MALINA brunch plate with poached eggs, herbs, and toast",
   },
   {
@@ -26,7 +37,7 @@ const experiences = [
     subtitle:
       "A drinks menu people can actually choose from, not a token side note",
     copy: "Latte, cappuccino, flat white, cortado, espresso, americano, mocha, hot chocolate, matcha latte, green tea, white tea, black tea, flower tea, smoothies, shakes, and juices sit alongside toast favourites, salads, pancakes, and easy daytime plates.",
-    image: "/food/mochaCoffee.jpg",
+    image: "/food/mochaCoffee.webp",
     alt: "MALINA mocha coffee topped with cream and chocolate drizzle",
   },
   {
@@ -35,7 +46,7 @@ const experiences = [
     subtitle:
       "A counter that changes, plus cakes people order for life's better moments",
     copy: "Desserts are made daily and the counter changes with the day, which keeps the counter feeling alive. Alongside that, celebration cakes can cover birthdays, gatherings, gifting, and simple excuses to celebrate life.",
-    image: "/food/sliceCake.jpg",
+    image: "/food/sliceCake.webp",
     alt: "MALINA layered cake slice with berries on a plate",
   },
 ];
@@ -86,19 +97,19 @@ const menuPreviewCards = [
 
 const cakeMoments = [
   {
-    src: "/food/sliceCake.jpg",
+    src: "/food/sliceCake.webp",
     alt: "MALINA cake slice with berries and cream filling",
     title: "Daily cake counter",
     copy: "Fresh slices, layered cakes, and daily-made desserts give people a reason to come back often.",
   },
   {
-    src: "/food/macarons.jpg",
+    src: "/food/macarons.webp",
     alt: "MALINA macarons with caramel filling",
     title: "Signature sweet details",
     copy: "Macarons and patisserie details help MALINA feel handmade, giftable, and visually memorable.",
   },
   {
-    src: "/food/cake-coffee-coffeeMachine+Entrance.jpg",
+    src: "/food/cake-coffee-coffeeMachine+Entrance.webp",
     alt: "MALINA cake and coffee beside the coffee machine and counter",
     title: "Coffee and cake moments",
     copy: "The counter should sell the ritual too: choose dessert, add coffee, stay a little longer.",
@@ -109,6 +120,13 @@ const cakeMoments = [
     title: "Milestones and gatherings",
     copy: "Baby showers, dinner parties, thank-yous, and all the reasons people want something beautiful.",
   },
+];
+
+const customCakeTypes = [
+  "Birthday cakes",
+  "Celebration cakes",
+  "Children's cakes",
+  "Number cakes",
 ];
 
 const visitDetails = [
@@ -125,18 +143,29 @@ const INTRO_STORAGE_KEY = "malina_intro_seen";
 const INTRO_PLAY_MS = 3400;
 const INTRO_EXIT_MS = 850;
 const INTRO_FORCE_PARAM = "intro";
+const INTRO_SKIP_VALUE = "skip";
 
-const shouldForceIntro = () => {
+const readIntroParam = () => {
   if (typeof window === "undefined") {
-    return false;
+    return null;
   }
 
-  return (
-    new URLSearchParams(window.location.search).get(INTRO_FORCE_PARAM) === "1"
-  );
+  return new URLSearchParams(window.location.search).get(INTRO_FORCE_PARAM);
+};
+
+const shouldForceIntro = () => {
+  return readIntroParam() === "1";
+};
+
+const shouldSkipIntro = () => {
+  return readIntroParam() === INTRO_SKIP_VALUE;
 };
 
 const readIntroSeen = () => {
+  if (shouldSkipIntro()) {
+    return true;
+  }
+
   if (
     typeof window === "undefined" ||
     import.meta.env.DEV ||
@@ -155,6 +184,7 @@ const readIntroSeen = () => {
 const writeIntroSeen = () => {
   if (
     typeof window === "undefined" ||
+    shouldSkipIntro() ||
     import.meta.env.DEV ||
     shouldForceIntro()
   ) {
@@ -309,7 +339,7 @@ function App() {
               </a>
               <a
                 className="button button-outline"
-                href="mailto:malinapatisserie@gmail.com"
+                href="/cakes/"
               >
                 Cake and events
               </a>
@@ -342,7 +372,7 @@ function App() {
 
             <div className="intro-panel">
               <img
-                src="/food/avocadoFeta-crispyBacon.jpg"
+                src="/food/avocadoFeta-crispyBacon.webp"
                 alt="MALINA avocado toast with salmon and poached eggs"
               />
               <div className="intro-panel-copy">
@@ -361,25 +391,7 @@ function App() {
             ))}
           </div>
 
-          <div className="section-inner drinks-band">
-            <div className="drinks-band-copy">
-              <p className="eyebrow">Coffee and Drinks</p>
-              <h3>Hot coffees, teas, matcha, smoothies, shakes, and juices.</h3>
-              <p>
-                Enough choice for a quick coffee stop, a slower catch-up, or the
-                easy extra that turns brunch into a longer stay.
-              </p>
-            </div>
-
-            <div
-              className="drinks-tag-cloud"
-              aria-label="MALINA coffee and drinks selection"
-            >
-              {drinksSelection.map((drink) => (
-                <span key={drink}>{drink}</span>
-              ))}
-            </div>
-          </div>
+          <CoffeeDrinks />
         </section>
 
         <section className="menu-preview-section">
@@ -459,6 +471,43 @@ function App() {
             </p>
           </div>
 
+          <div className="section-inner cake-enquiry-panel">
+            <div className="cake-enquiry-copy">
+              <p className="eyebrow">Custom cakes</p>
+              <h3>Looking for a custom cake?</h3>
+              <p>
+                Call or WhatsApp 07366 695384, email
+                {" "}
+                <a href="mailto:malinapatisserie@gmail.com">
+                  malinapatisserie@gmail.com
+                </a>
+                , or pop into the shop. If you don't see the cake you want,
+                we'll make it.
+              </p>
+            </div>
+
+            <div className="cake-enquiry-details">
+              <ul className="cake-type-list" aria-label="Custom cake options">
+                {customCakeTypes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+
+              <div className="cake-enquiry-actions">
+                <a href="/cakes/">Cake collection</a>
+                <a href="tel:+447366695384">Call</a>
+                <a
+                  href="https://wa.me/447366695384"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  WhatsApp
+                </a>
+                <a href="mailto:malinapatisserie@gmail.com">Email</a>
+              </div>
+            </div>
+          </div>
+
           <div className="gallery-strip" aria-label="MALINA cake offering">
             {cakeMoments.map((image) => (
               <article key={image.src} className="gallery-frame">
@@ -528,6 +577,8 @@ function App() {
           </div>
         </section>
       </main>
+
+      <Footer links={footerLinks} />
     </div>
   );
 }
