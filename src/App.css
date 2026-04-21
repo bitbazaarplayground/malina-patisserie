@@ -339,54 +339,6 @@ section[id] {
   margin-top: 30px;
 }
 
-.drinks-band {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 24px;
-  align-items: start;
-  margin-top: 40px;
-  padding-top: 34px;
-  border-top: 1px solid rgba(245, 238, 232, 0.1);
-}
-
-.drinks-band-copy h3 {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 40px;
-  line-height: 1.04;
-  color: #fff7f2;
-}
-
-.drinks-band-copy p:last-child {
-  max-width: 520px;
-  margin: 16px 0 0;
-  color: rgba(245, 238, 232, 0.76);
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-.drinks-tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-content: flex-start;
-}
-
-.drinks-tag-cloud span {
-  padding: 12px 16px;
-  border: 1px solid rgba(245, 238, 232, 0.12);
-  border-radius: 999px;
-  background: linear-gradient(
-      180deg,
-      rgba(245, 238, 232, 0.05),
-      rgba(245, 238, 232, 0.02)
-    ),
-    rgba(8, 14, 11, 0.3);
-  color: #f5eee8;
-  font-size: 14px;
-  font-weight: 600;
-}
-
 .menu-preview-section {
   padding: 0 0 110px;
 }
@@ -530,18 +482,18 @@ section[id] {
 }
 
 .menu-header {
-  padding-bottom: 30px;
+  padding-bottom: 22px;
 }
 
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 14px;
 }
 
 .menu-category,
 .menu-support-card {
-  padding: 28px;
+  padding: 22px;
   border: 1px solid rgba(245, 238, 232, 0.1);
   border-radius: 8px;
   background: linear-gradient(
@@ -554,13 +506,13 @@ section[id] {
 
 .menu-category-header {
   display: grid;
-  gap: 8px;
+  gap: 4px;
 }
 
 .menu-category-note {
   margin: 0;
   color: #d59bab;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -569,40 +521,40 @@ section[id] {
 .menu-support-card h3 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 34px;
-  line-height: 1.06;
+  font-size: 28px;
+  line-height: 1.08;
   color: #fff7f2;
 }
 
 .menu-list {
-  margin-top: 20px;
+  margin-top: 14px;
 }
 
 .menu-item + .menu-item {
-  margin-top: 18px;
-  padding-top: 18px;
+  margin-top: 14px;
+  padding-top: 14px;
   border-top: 1px solid rgba(245, 238, 232, 0.08);
 }
 
 .menu-item-top {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
   gap: 16px;
 }
 
 .menu-item h4 {
   margin: 0;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.35;
   color: #fff7f2;
 }
 
 .menu-price {
   flex-shrink: 0;
   color: #e0a84a;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -610,52 +562,51 @@ section[id] {
 .menu-support-card p,
 .menu-support-list li,
 .menu-category-footer {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: rgba(245, 238, 232, 0.76);
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .menu-item-note {
   color: #d59bab;
+  font-size: 13px;
 }
 
 .menu-category-footer {
-  margin-top: 20px;
-  padding-top: 18px;
+  margin-top: 14px;
+  padding-top: 14px;
   border-top: 1px solid rgba(245, 238, 232, 0.08);
-}
-
-.menu-pill-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.menu-pill-list span {
-  padding: 12px 16px;
-  border: 1px solid rgba(245, 238, 232, 0.12);
-  border-radius: 999px;
-  background: rgba(245, 238, 232, 0.04);
-  color: #f5eee8;
-  font-size: 14px;
-  font-weight: 600;
 }
 
 .menu-support-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 18px;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.menu-support-card:only-child {
+  grid-column: 1 / -1;
+}
+
+.menu-drinks-grid {
+  margin-top: 14px;
+}
+
+.menu-price-note {
+  margin-top: 16px;
+  color: rgba(245, 238, 232, 0.58);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .menu-support-list {
   list-style: none;
   padding: 0;
-  margin: 16px 0 0;
+  margin: 12px 0 0;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .experiences-heading {
@@ -749,10 +700,104 @@ section[id] {
   margin: 0 auto;
 }
 
+.cake-enquiry-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 28px;
+  border: 1px solid rgba(245, 238, 232, 0.1);
+  border-radius: 8px;
+  background: linear-gradient(
+      135deg,
+      rgba(224, 168, 74, 0.08),
+      rgba(213, 155, 171, 0.06)
+    ),
+    rgba(8, 14, 11, 0.4);
+}
+
+.cake-enquiry-copy h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  line-height: 1.06;
+  color: #fff7f2;
+}
+
+.cake-enquiry-copy p:last-child,
+.cake-enquiry-copy a {
+  color: rgba(245, 238, 232, 0.82);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.cake-enquiry-copy p:last-child {
+  margin: 16px 0 0;
+}
+
+.cake-enquiry-copy a {
+  text-decoration: none;
+}
+
+.cake-enquiry-copy a:hover,
+.cake-enquiry-copy a:focus-visible,
+.cake-enquiry-actions a:hover,
+.cake-enquiry-actions a:focus-visible,
+.visit-link:hover,
+.visit-link:focus-visible {
+  color: #ffffff;
+}
+
+.cake-enquiry-details {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.cake-type-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.cake-type-list li {
+  padding: 12px 14px;
+  border: 1px solid rgba(245, 238, 232, 0.12);
+  border-radius: 8px;
+  background: rgba(245, 238, 232, 0.04);
+  color: #f5eee8;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cake-enquiry-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cake-enquiry-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid rgba(245, 238, 232, 0.14);
+  border-radius: 8px;
+  background: rgba(245, 238, 232, 0.04);
+  color: rgba(245, 238, 232, 0.84);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
 .gallery-frame {
   position: relative;
   margin: 0;
-  min-height: 620px;
+  min-height: 0;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -845,8 +890,11 @@ section[id] {
 }
 
 .visit-link {
+  color: rgba(245, 238, 232, 0.84);
   font-size: 22px;
   line-height: 1.35;
+  text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
 @keyframes introImageReveal {
@@ -909,14 +957,18 @@ section[id] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .cake-enquiry-panel,
   .gallery-frame {
-    min-height: 420px;
+    min-height: 0;
+  }
+
+  .cake-enquiry-panel {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 840px) {
   .section-inner,
-  .site-header,
   .gallery-strip {
     width: min(100% - 32px, 1200px);
   }
@@ -936,19 +988,6 @@ section[id] {
     align-items: center;
   }
 
-  .site-header {
-    top: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .site-nav {
-    order: 3;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
-  }
-
   .hero-content {
     padding-top: 204px;
   }
@@ -966,13 +1005,13 @@ section[id] {
     font-size: 44px;
   }
 
-  .drinks-band-copy h3 {
-    font-size: 34px;
+  .cake-enquiry-copy h3 {
+    font-size: 30px;
   }
 
   .menu-category h3,
   .menu-support-card h3 {
-    font-size: 30px;
+    font-size: 26px;
   }
 
   .intro-panel,
@@ -1009,26 +1048,6 @@ section[id] {
     font-size: 16px;
   }
 
-  .site-header {
-    gap: 12px;
-    padding: 12px;
-  }
-
-  .brand {
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-  }
-
-  .brand-mark {
-    font-size: 24px;
-  }
-
-  .site-nav {
-    gap: 14px;
-    font-size: 14px;
-  }
-
   .button {
     width: 100%;
   }
@@ -1061,18 +1080,14 @@ section[id] {
     font-size: 32px;
   }
 
-  .drinks-band-copy h3 {
-    font-size: 28px;
-  }
-
   .menu-category,
   .menu-support-card {
-    padding: 22px;
+    padding: 18px;
   }
 
   .menu-category h3,
   .menu-support-card h3 {
-    font-size: 26px;
+    font-size: 23px;
   }
 
   .intro-section,
@@ -1116,12 +1131,16 @@ section[id] {
   }
 
   .menu-item-top {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     align-items: flex-start;
     gap: 4px;
   }
 
   .visit-layout {
+    padding: 22px;
+  }
+
+  .cake-enquiry-panel {
     padding: 22px;
   }
 

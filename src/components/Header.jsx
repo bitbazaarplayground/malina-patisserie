@@ -79,9 +79,9 @@ export default function Header({ navigation = [] }) {
 
         <a
           className="brand"
-          href="#top"
+          href="/?intro=1"
           aria-label="MALINA Patisserie home"
-          onClick={(event) => handleLinkClick(event, "#top")}
+          onClick={(event) => handleLinkClick(event, "/?intro=1")}
         >
           <span className="brand-subtitle">Patisserie</span>
           <span className="brand-mark">MALINA</span>
@@ -128,16 +128,6 @@ export default function Header({ navigation = [] }) {
         aria-label="Mobile navigation"
       >
         <div className="mobile-drawer-top">
-          <a
-            className="brand mobile-brand"
-            href="#top"
-            aria-label="MALINA Patisserie home"
-            onClick={(event) => handleLinkClick(event, "#top")}
-          >
-            <span className="brand-subtitle">Patisserie</span>
-            <span className="brand-mark">MALINA</span>
-          </a>
-
           <button
             type="button"
             className="mobile-close"

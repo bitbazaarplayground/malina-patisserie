@@ -1,0 +1,454 @@
+.cakes-page-shell {
+  min-height: 100svh;
+}
+
+.cakes-page-main {
+  padding-bottom: 32px;
+}
+
+.cakes-page-shell .section-inner {
+  width: min(1440px, calc(100% - 24px));
+}
+
+.cakes-hero {
+  position: relative;
+  min-height: 88svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: clip;
+}
+
+.cakes-hero-image,
+.cakes-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.cakes-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  filter: brightness(0.58) saturate(0.96);
+}
+
+.cakes-hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(7, 12, 9, 0.88) 12%, rgba(7, 12, 9, 0.48) 55%, rgba(30, 11, 18, 0.68) 100%),
+    linear-gradient(180deg, rgba(7, 12, 9, 0.18) 0%, rgba(7, 12, 9, 0.82) 100%);
+}
+
+.cakes-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 164px 0 68px;
+}
+
+.cakes-hero-content h1 {
+  max-width: 860px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 76px;
+  line-height: 0.98;
+  color: #fff7f2;
+}
+
+.cakes-hero-copy {
+  max-width: 620px;
+  margin: 22px 0 0;
+  color: rgba(245, 238, 232, 0.82);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.cake-occasion-section,
+.cake-feature-section,
+.cake-catalogue-section,
+.cake-process-section,
+.cake-enquiry-section {
+  padding: 96px 0 0;
+}
+
+.cakes-section-heading {
+  padding-bottom: 28px;
+}
+
+.cakes-section-heading h2,
+.cake-catalogue-copy h2,
+.cake-enquiry-page-copy h2 {
+  margin: 0;
+  max-width: 860px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 56px;
+  line-height: 1.02;
+  color: #fff7f2;
+}
+
+.cake-occasion-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.cake-occasion-card,
+.cake-process-card,
+.cake-catalogue-item {
+  border: 1px solid rgba(245, 238, 232, 0.1);
+  border-radius: 8px;
+  background: linear-gradient(
+      180deg,
+      rgba(245, 238, 232, 0.05),
+      rgba(245, 238, 232, 0.02)
+    ),
+    rgba(8, 14, 11, 0.38);
+}
+
+.cake-occasion-card {
+  padding: 24px;
+}
+
+.cake-occasion-card h3,
+.cake-card-copy h3,
+.cake-catalogue-copy h2,
+.cake-catalogue-item h3,
+.cake-process-card h3 {
+  margin: 0;
+}
+
+.cake-occasion-card h3,
+.cake-card-copy h3,
+.cake-process-card h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #fff7f2;
+}
+
+.cake-occasion-card h3 {
+  font-size: 28px;
+  line-height: 1.08;
+}
+
+.cake-occasion-card p,
+.cake-card-copy p,
+.cake-catalogue-copy p,
+.cake-process-card p,
+.cake-enquiry-page-copy p {
+  color: rgba(245, 238, 232, 0.78);
+  line-height: 1.62;
+}
+
+.cake-occasion-card p,
+.cake-card-copy p,
+.cake-process-card p {
+  margin: 14px 0 0;
+  font-size: 15px;
+}
+
+.cake-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.cake-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(245, 238, 232, 0.1);
+  border-radius: 8px;
+  background: rgba(8, 14, 11, 0.38);
+}
+
+.cake-card-media {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.cake-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cake-card-copy {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.cake-card-topline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.cake-card-topline span {
+  color: #d59bab;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cake-card-topline strong {
+  flex-shrink: 0;
+  color: #e0a84a;
+  font-size: 12px;
+}
+
+.cake-card-copy h3 {
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.cake-catalogue-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.72fr) minmax(0, 1.28fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.cake-catalogue-copy {
+  position: sticky;
+  top: 124px;
+}
+
+.cake-catalogue-copy p {
+  max-width: 500px;
+  margin: 18px 0 0;
+  font-size: 17px;
+}
+
+.cake-catalogue-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.cake-catalogue-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 16px;
+}
+
+.cake-catalogue-item h3 {
+  color: #fff7f2;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.cake-catalogue-item span {
+  color: #e0a84a;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cake-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.cake-process-card {
+  padding: 24px;
+}
+
+.cake-process-card > span {
+  display: block;
+  margin-bottom: 18px;
+  color: #d59bab;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cake-process-card h3 {
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.cake-enquiry-section {
+  padding-bottom: 96px;
+}
+
+.cake-enquiry-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+  gap: 28px;
+  padding: 34px;
+  border: 1px solid rgba(245, 238, 232, 0.1);
+  border-radius: 8px;
+  background: linear-gradient(
+      135deg,
+      rgba(224, 168, 74, 0.08),
+      rgba(213, 155, 171, 0.06)
+    ),
+    rgba(8, 14, 11, 0.52);
+}
+
+.cake-enquiry-page-copy p {
+  max-width: 720px;
+  margin: 18px 0 0;
+  font-size: 17px;
+}
+
+.cake-enquiry-page-copy a {
+  color: rgba(245, 238, 232, 0.86);
+  text-decoration: none;
+}
+
+.cake-enquiry-page-copy a:hover,
+.cake-enquiry-page-copy a:focus-visible {
+  color: #ffffff;
+}
+
+.cake-enquiry-page-actions {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.cake-enquiry-page-actions a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 1px solid rgba(245, 238, 232, 0.14);
+  border-radius: 8px;
+  background: rgba(245, 238, 232, 0.04);
+  color: rgba(245, 238, 232, 0.86);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cake-enquiry-page-actions a:hover,
+.cake-enquiry-page-actions a:focus-visible {
+  color: #ffffff;
+  border-color: rgba(245, 238, 232, 0.26);
+}
+
+@media (max-width: 1120px) {
+  .cakes-hero-content h1 {
+    font-size: 62px;
+  }
+
+  .cake-occasion-grid,
+  .cake-feature-grid,
+  .cake-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cake-catalogue-layout,
+  .cake-enquiry-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cake-catalogue-copy {
+    position: static;
+  }
+}
+
+@media (max-width: 840px) {
+  .cakes-page-shell .section-inner {
+    width: 100%;
+  }
+
+  .cakes-hero-content,
+  .cakes-section-heading,
+  .cake-catalogue-copy,
+  .cake-enquiry-page-copy {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .cakes-hero {
+    min-height: 82svh;
+  }
+
+  .cakes-hero-content {
+    padding-top: 176px;
+    padding-bottom: 54px;
+  }
+
+  .cakes-hero-content h1,
+  .cakes-section-heading h2,
+  .cake-catalogue-copy h2,
+  .cake-enquiry-page-copy h2 {
+    font-size: 42px;
+  }
+
+  .cakes-hero-copy {
+    font-size: 16px;
+  }
+
+  .cake-catalogue-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .cakes-page-shell .section-inner {
+    width: 100%;
+  }
+
+  .cakes-hero-content,
+  .cakes-section-heading,
+  .cake-catalogue-copy,
+  .cake-enquiry-page-copy {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .cakes-hero {
+    min-height: 78svh;
+  }
+
+  .cakes-hero-content {
+    padding-top: 154px;
+    padding-bottom: 42px;
+  }
+
+  .cakes-hero-content h1,
+  .cakes-section-heading h2,
+  .cake-catalogue-copy h2,
+  .cake-enquiry-page-copy h2 {
+    font-size: 32px;
+  }
+
+  .cake-occasion-section,
+  .cake-feature-section,
+  .cake-catalogue-section,
+  .cake-process-section,
+  .cake-enquiry-section {
+    padding-top: 76px;
+  }
+
+  .cake-occasion-grid,
+  .cake-feature-grid,
+  .cake-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cake-occasion-card,
+  .cake-process-card {
+    padding: 20px;
+  }
+
+  .cake-catalogue-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .cake-enquiry-layout {
+    padding: 22px;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+}

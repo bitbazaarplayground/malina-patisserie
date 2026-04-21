@@ -1,13 +1,25 @@
+import { useEffect } from 'react'
 import './App.css'
 import './MenuPage.css'
 import Header from './components/Header'
-import { menuSections, menuSupportingCards } from './menuData'
+import Footer from './components/Footer'
+import { menuDrinkSections, menuSections, menuSupportingCards } from './menuData'
 
 const navigation = [
-  { label: 'Brunch', href: '/#experiences' },
+  { label: 'Brunch', href: '/?intro=skip#experiences' },
   { label: 'Menu', href: '#menu-list' },
-  { label: 'Cakes', href: '/#cakes' },
+  { label: 'Cakes', href: '/cakes/' },
   { label: 'Visit', href: '#visit' },
+]
+
+const footerLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Menu', href: '#menu-list' },
+  { label: 'Cakes', href: '/cakes/' },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/malinapatisserie/',
+  },
 ]
 
 const heroNotes = [
@@ -27,8 +39,58 @@ const visitDetails = [
 ]
 
 const slugify = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+const getSectionId = (section) => section.id || slugify(section.title)
+
+const jumpSections = [...menuSections, ...menuDrinkSections]
+
+const renderMenuCategory = (section) => (
+  <article key={section.title} id={getSectionId(section)} className="menu-category">
+    <div className="menu-category-header">
+      {section.note ? <p className="menu-category-note">{section.note}</p> : null}
+      <h3>{section.title}</h3>
+    </div>
+
+    <div className="menu-list">
+      {section.items.map((item) => (
+        <article key={item.name} className="menu-item">
+          <div className="menu-item-top">
+            <h4>{item.name}</h4>
+            <span className="menu-price">{item.price}</span>
+          </div>
+          {item.description ? <p>{item.description}</p> : null}
+          {item.note ? <p className="menu-item-note">{item.note}</p> : null}
+        </article>
+      ))}
+    </div>
+
+    {section.footer ? <p className="menu-category-footer">{section.footer}</p> : null}
+  </article>
+)
 
 function MenuPage() {
+  useEffect(() => {
+    if (!window.location.hash) return undefined
+
+    const frame = window.requestAnimationFrame(() => {
+      const id = window.location.hash.replace('#', '')
+      const element = document.getElementById(id)
+
+      if (!element) return
+
+      const header = document.querySelector('.site-header')
+      const headerHeight = header ? header.getBoundingClientRect().height : 88
+      const targetY =
+        element.getBoundingClientRect().top + window.scrollY - headerHeight - 18
+
+      window.scrollTo({
+        top: Math.max(targetY, 0),
+        behavior: 'smooth',
+      })
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [])
+
   return (
     <div className="site-shell menu-page-shell">
       <Header navigation={navigation} />
@@ -39,7 +101,7 @@ function MenuPage() {
         <section className="menu-page-hero">
           <img
             className="menu-page-hero-image"
-            src="/food/cake-coffee-coffeeMachine+Entrance.jpg"
+            src="/food/cake-coffee-coffeeMachine+Entrance.webp"
             alt="MALINA coffee and cake beside the counter"
           />
           <div className="menu-page-hero-overlay" aria-hidden="true" />
@@ -73,8 +135,8 @@ function MenuPage() {
           <div className="section-inner menu-page-jump-layout">
             <p className="eyebrow eyebrow-accent">Jump To</p>
             <div className="menu-page-jumps">
-              {menuSections.map((section) => (
-                <a key={section.title} href={`#${slugify(section.title)}`}>
+              {jumpSections.map((section) => (
+                <a key={section.title} href={`#${getSectionId(section)}`}>
                   {section.title}
                 </a>
               ))}
@@ -93,37 +155,11 @@ function MenuPage() {
           </div>
 
           <div className="section-inner menu-grid">
-            {menuSections.map((section) => (
-              <article key={section.title} id={slugify(section.title)} className="menu-category">
-                <div className="menu-category-header">
-                  <p className="menu-category-note">{section.note}</p>
-                  <h3>{section.title}</h3>
-                </div>
+            {menuSections.map((section) => renderMenuCategory(section))}
+          </div>
 
-                {section.compact ? (
-                  <div className="menu-pill-list" aria-label={section.title}>
-                    {section.items.map((item) => (
-                      <span key={item.name}>{item.name}</span>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="menu-list">
-                    {section.items.map((item) => (
-                      <article key={item.name} className="menu-item">
-                        <div className="menu-item-top">
-                          <h4>{item.name}</h4>
-                          <span className="menu-price">{item.price}</span>
-                        </div>
-                        <p>{item.description}</p>
-                        {item.note ? <p className="menu-item-note">{item.note}</p> : null}
-                      </article>
-                    ))}
-                  </div>
-                )}
-
-                {section.footer ? <p className="menu-category-footer">{section.footer}</p> : null}
-              </article>
-            ))}
+          <div className="section-inner menu-grid menu-drinks-grid" aria-label="Drinks menu">
+            {menuDrinkSections.map((section) => renderMenuCategory(section))}
           </div>
 
           <div className="section-inner menu-support-grid">
@@ -141,6 +177,10 @@ function MenuPage() {
               </article>
             ))}
           </div>
+
+          <p className="section-inner menu-price-note">
+            Prices are subject to change.
+          </p>
         </section>
 
         <section className="visit-section menu-page-visit" id="visit">
@@ -162,7 +202,7 @@ function MenuPage() {
                 >
                   Get directions
                 </a>
-                <a className="button button-outline" href="mailto:malinapatisserie@gmail.com">
+                <a className="button button-outline" href="/cakes/">
                   Cake and events
                 </a>
               </div>
@@ -196,6 +236,8 @@ function MenuPage() {
           </div>
         </section>
       </main>
+
+      <Footer links={footerLinks} />
     </div>
   )
 }
