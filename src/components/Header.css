@@ -235,7 +235,7 @@ section[id] {
 
 @media (max-width: 920px) {
   .site-header {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
     gap: 10px;
     top: 0;
     width: 100%;
@@ -245,6 +245,13 @@ section[id] {
     border-right: 0;
     border-left: 0;
     border-radius: 0;
+  }
+
+  .site-header::before {
+    content: "";
+    grid-column: 1;
+    width: 44px;
+    height: 44px;
   }
 
   .nav-left,
