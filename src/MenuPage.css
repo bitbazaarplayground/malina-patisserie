@@ -57,36 +57,8 @@
   line-height: 1.55;
 }
 
-.menu-page-jump-band {
-  padding: 18px 0 0;
-}
-
-.menu-page-jump-layout {
-  display: grid;
-  gap: 16px;
-}
-
-.menu-page-jumps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.menu-page-jumps a {
-  padding: 9px 12px;
-  border: 1px solid rgba(245, 238, 232, 0.12);
-  border-radius: 999px;
-  background: rgba(245, 238, 232, 0.04);
-  color: #f5eee8;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.menu-page-jumps a:hover,
-.menu-page-jumps a:focus-visible {
-  border-color: rgba(245, 238, 232, 0.24);
-  color: #ffffff;
+.menu-page-section {
+  padding-top: 28px;
 }
 
 .menu-page-section .menu-category {
@@ -134,5 +106,9 @@
 
   .menu-page-hero-copy {
     font-size: 15px;
+  }
+
+  .menu-page-section {
+    padding-top: 22px;
   }
 }

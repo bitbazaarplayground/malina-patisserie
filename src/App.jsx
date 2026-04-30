@@ -30,6 +30,7 @@ const experiences = [
     copy: "Shakshuka, English Breakfast Our Way, Potato Fritters with Salmon, Halloumi Bowl, poke bowls, and signature toast plates give MALINA a real brunch identity, not just a cafe feel.",
     image: "/food/artichoke-poachedEgg.webp",
     alt: "MALINA brunch plate with poached eggs, herbs, and toast",
+    imagePosition: "center center",
   },
   {
     id: "02",
@@ -39,6 +40,7 @@ const experiences = [
     copy: "Latte, cappuccino, flat white, cortado, espresso, americano, mocha, hot chocolate, matcha latte, green tea, white tea, black tea, flower tea, smoothies, shakes, and juices sit alongside toast favourites, salads, pancakes, and easy daytime plates.",
     image: "/food/mochaCoffee.webp",
     alt: "MALINA mocha coffee topped with cream and chocolate drizzle",
+    imagePosition: "center 22%",
   },
   {
     id: "03",
@@ -48,6 +50,7 @@ const experiences = [
     copy: "Desserts are made daily and the counter changes with the day, which keeps the counter feeling alive. Alongside that, celebration cakes can cover birthdays, gatherings, gifting, and simple excuses to celebrate life.",
     image: "/food/sliceCake.webp",
     alt: "MALINA layered cake slice with berries on a plate",
+    imagePosition: "center 42%",
   },
 ];
 
@@ -129,14 +132,10 @@ const customCakeTypes = [
   "Number cakes",
 ];
 
-const visitDetails = [
-  { day: "Monday", hours: "Closed" },
-  { day: "Tuesday", hours: "9:00 - 16:00" },
-  { day: "Wednesday", hours: "9:00 - 16:00" },
-  { day: "Thursday", hours: "9:00 - 16:00" },
-  { day: "Friday", hours: "9:00 - 16:00" },
-  { day: "Saturday", hours: "9:00 - 16:00" },
-  { day: "Sunday", hours: "9:00 - 15:00" },
+const visitHoursSummary = [
+  { day: "Mon", hours: "Closed" },
+  { day: "Tue-Sat", hours: "9:00 - 16:00" },
+  { day: "Sun", hours: "9:00 - 15:00" },
 ];
 
 const INTRO_STORAGE_KEY = "malina_intro_seen";
@@ -444,7 +443,11 @@ function App() {
             >
               <div className="section-inner experience-layout">
                 <div className="experience-media">
-                  <img src={experience.image} alt={experience.alt} />
+                  <img
+                    src={experience.image}
+                    alt={experience.alt}
+                    style={{ objectPosition: experience.imagePosition }}
+                  />
                 </div>
 
                 <div className="experience-copy">
@@ -494,7 +497,6 @@ function App() {
               </ul>
 
               <div className="cake-enquiry-actions">
-                <a href="/cakes/">Cake collection</a>
                 <a href="tel:+447366695384">Call</a>
                 <a
                   href="https://wa.me/447366695384"
@@ -503,7 +505,13 @@ function App() {
                 >
                   WhatsApp
                 </a>
-                <a href="mailto:malinapatisserie@gmail.com">Email</a>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=45+Kings+Road+Brentwood+CM14+4DJ"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Find us
+                </a>
               </div>
             </div>
           </div>
@@ -527,8 +535,9 @@ function App() {
               <p className="eyebrow">Visit MALINA</p>
               <h2>Make Brentwood feel like the invitation.</h2>
               <p>
-                45 Kings Road, Brentwood CM14 4DJ. A family-run patisserie with
-                the bones to feel far more transportive online and in person.
+                45 Kings Road, Brentwood CM14 4DJ. Join us for all-day brunch,
+                coffee, daily desserts, and cakes made for everyday treats and
+                bigger celebrations.
               </p>
 
               <div className="visit-actions">
@@ -555,7 +564,7 @@ function App() {
               <div className="visit-card-block">
                 <p className="visit-label">Opening hours</p>
                 <ul className="hours-list">
-                  {visitDetails.map((entry) => (
+                  {visitHoursSummary.map((entry) => (
                     <li key={entry.day}>
                       <span>{entry.day}</span>
                       <span>{entry.hours}</span>

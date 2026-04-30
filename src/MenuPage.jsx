@@ -28,20 +28,14 @@ const heroNotes = [
   'Daily desserts and celebration cakes',
 ]
 
-const visitDetails = [
-  { day: 'Monday', hours: 'Closed' },
-  { day: 'Tuesday', hours: '9:00 - 16:00' },
-  { day: 'Wednesday', hours: '9:00 - 16:00' },
-  { day: 'Thursday', hours: '9:00 - 16:00' },
-  { day: 'Friday', hours: '9:00 - 16:00' },
-  { day: 'Saturday', hours: '9:00 - 16:00' },
-  { day: 'Sunday', hours: '9:00 - 15:00' },
+const visitHoursSummary = [
+  { day: 'Mon', hours: 'Closed' },
+  { day: 'Tue-Sat', hours: '9:00 - 16:00' },
+  { day: 'Sun', hours: '9:00 - 15:00' },
 ]
 
 const slugify = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 const getSectionId = (section) => section.id || slugify(section.title)
-
-const jumpSections = [...menuSections, ...menuDrinkSections]
 
 const renderMenuCategory = (section) => (
   <article key={section.title} id={getSectionId(section)} className="menu-category">
@@ -131,19 +125,6 @@ function MenuPage() {
           </div>
         </section>
 
-        <section className="menu-page-jump-band" aria-label="Menu categories">
-          <div className="section-inner menu-page-jump-layout">
-            <p className="eyebrow eyebrow-accent">Jump To</p>
-            <div className="menu-page-jumps">
-              {jumpSections.map((section) => (
-                <a key={section.title} href={`#${getSectionId(section)}`}>
-                  {section.title}
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="menu-section menu-page-section" id="menu-list">
           <div className="section-inner menu-header">
             <p className="eyebrow">The Menu</p>
@@ -212,7 +193,7 @@ function MenuPage() {
               <div className="visit-card-block">
                 <p className="visit-label">Opening hours</p>
                 <ul className="hours-list">
-                  {visitDetails.map((entry) => (
+                  {visitHoursSummary.map((entry) => (
                     <li key={entry.day}>
                       <span>{entry.day}</span>
                       <span>{entry.hours}</span>

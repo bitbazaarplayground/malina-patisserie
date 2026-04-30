@@ -139,7 +139,7 @@
 
 @media (max-width: 560px) {
   .site-footer .section-inner {
-    width: calc(100% - 16px);
+    width: min(100% - 28px, 1200px);
   }
 
   .site-footer {

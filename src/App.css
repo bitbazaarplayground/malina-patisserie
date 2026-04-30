@@ -506,7 +506,7 @@ section[id] {
 
 .menu-category-header {
   display: grid;
-  gap: 4px;
+  gap: 8px;
 }
 
 .menu-category-note {
@@ -872,14 +872,14 @@ section[id] {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .hours-list li {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  padding-bottom: 12px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(245, 238, 232, 0.08);
   color: rgba(245, 238, 232, 0.84);
 }
@@ -973,6 +973,10 @@ section[id] {
     width: min(100% - 32px, 1200px);
   }
 
+  .intro-section {
+    padding-top: 72px;
+  }
+
   .site-intro-gate {
     padding: calc(env(safe-area-inset-top, 0px) + 20px)
       calc(env(safe-area-inset-right, 0px) + 20px)
@@ -985,11 +989,12 @@ section[id] {
   }
 
   .hero-section {
-    align-items: center;
+    align-items: flex-start;
   }
 
   .hero-content {
-    padding-top: 204px;
+    padding-top: 160px;
+    padding-bottom: 64px;
   }
 
   .hero-content h1 {
@@ -1053,7 +1058,7 @@ section[id] {
   }
 
   .hero-content {
-    padding-top: 168px;
+    padding-top: 136px;
     padding-bottom: 44px;
   }
 
@@ -1099,6 +1104,10 @@ section[id] {
     padding-bottom: 80px;
   }
 
+  .intro-section {
+    padding-top: 48px;
+  }
+
   .gallery-strip {
     grid-template-columns: 1fr;
   }
@@ -1134,6 +1143,11 @@ section[id] {
     grid-template-columns: 1fr;
     align-items: flex-start;
     gap: 4px;
+  }
+
+  .experience-media {
+    min-height: 0;
+    aspect-ratio: 1 / 1;
   }
 
   .visit-layout {
