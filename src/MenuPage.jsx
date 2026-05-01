@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 import { menuDrinkSections, menuSections, menuSupportingCards } from './menuData'
 
 const navigation = [
-  { label: 'Brunch', href: '/?intro=skip#experiences' },
+  { label: 'Home', href: '/?intro=skip#top' },
   { label: 'Menu', href: '#menu-list' },
   { label: 'Cakes', href: '/cakes/' },
   { label: 'Visit', href: '#visit' },
