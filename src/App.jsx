@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import CoffeeDrinks from "./components/home/CoffeeDrinks";
 
 const navigation = [
-  { label: "Brunch", href: "/?intro=skip#experiences" },
+  { label: "Home", href: "#top" },
   { label: "Menu", href: "/menu/" },
   { label: "Cakes", href: "/cakes/" },
   { label: "Visit", href: "#visit" },
@@ -30,7 +30,8 @@ const experiences = [
     copy: "Shakshuka, English Breakfast Our Way, Potato Fritters with Salmon, Halloumi Bowl, poke bowls, and signature toast plates give MALINA a real brunch identity, not just a cafe feel.",
     image: "/food/artichoke-poachedEgg.webp",
     alt: "MALINA brunch plate with poached eggs, herbs, and toast",
-    imagePosition: "center center",
+    imagePositionDesktop: "center center",
+    imagePositionMobile: "center center",
   },
   {
     id: "02",
@@ -39,8 +40,10 @@ const experiences = [
       "A drinks menu people can actually choose from, not a token side note",
     copy: "Latte, cappuccino, flat white, cortado, espresso, americano, mocha, hot chocolate, matcha latte, green tea, white tea, black tea, flower tea, smoothies, shakes, and juices sit alongside toast favourites, salads, pancakes, and easy daytime plates.",
     image: "/food/mochaCoffee.webp",
+    desktopImage: "/food/mochaCoffee-desktop.jpg",
     alt: "MALINA mocha coffee topped with cream and chocolate drizzle",
-    imagePosition: "center 22%",
+    imagePositionDesktop: "center center",
+    imagePositionMobile: "center 22%",
   },
   {
     id: "03",
@@ -49,8 +52,10 @@ const experiences = [
       "A counter that changes, plus cakes people order for life's better moments",
     copy: "Desserts are made daily and the counter changes with the day, which keeps the counter feeling alive. Alongside that, celebration cakes can cover birthdays, gatherings, gifting, and simple excuses to celebrate life.",
     image: "/food/sliceCake.webp",
+    desktopImage: "/food/sliceCake-desktop.jpg",
     alt: "MALINA layered cake slice with berries on a plate",
-    imagePosition: "center 42%",
+    imagePositionDesktop: "center center",
+    imagePositionMobile: "center 44%",
   },
 ];
 
@@ -104,24 +109,28 @@ const cakeMoments = [
     alt: "MALINA cake slice with berries and cream filling",
     title: "Daily cake counter",
     copy: "Fresh slices, layered cakes, and daily-made desserts give people a reason to come back often.",
+    imagePosition: "center 42%",
   },
   {
     src: "/food/macarons.webp",
     alt: "MALINA macarons with caramel filling",
     title: "Signature sweet details",
     copy: "Macarons and patisserie details help MALINA feel handmade, giftable, and visually memorable.",
+    imagePosition: "center center",
   },
   {
     src: "/food/cake-coffee-coffeeMachine+Entrance.webp",
     alt: "MALINA cake and coffee beside the coffee machine and counter",
     title: "Coffee and cake moments",
     copy: "The counter should sell the ritual too: choose dessert, add coffee, stay a little longer.",
+    imagePosition: "center 38%",
   },
   {
     src: "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=1200&q=80",
     alt: "Elegant frosted celebration cake with floral styling",
     title: "Milestones and gatherings",
     copy: "Baby showers, dinner parties, thank-yous, and all the reasons people want something beautiful.",
+    imagePosition: "center center",
   },
 ];
 
@@ -443,11 +452,24 @@ function App() {
             >
               <div className="section-inner experience-layout">
                 <div className="experience-media">
-                  <img
-                    src={experience.image}
-                    alt={experience.alt}
-                    style={{ objectPosition: experience.imagePosition }}
-                  />
+                  <picture>
+                    {experience.desktopImage ? (
+                      <source
+                        media="(min-width: 841px)"
+                        srcSet={experience.desktopImage}
+                      />
+                    ) : null}
+                    <img
+                      src={experience.image}
+                      alt={experience.alt}
+                      style={{
+                        "--experience-image-position-desktop":
+                          experience.imagePositionDesktop,
+                        "--experience-image-position-mobile":
+                          experience.imagePositionMobile,
+                      }}
+                    />
+                  </picture>
                 </div>
 
                 <div className="experience-copy">
@@ -516,10 +538,14 @@ function App() {
             </div>
           </div>
 
-          <div className="gallery-strip" aria-label="MALINA cake offering">
+          <div className="section-inner gallery-strip" aria-label="MALINA cake offering">
             {cakeMoments.map((image) => (
               <article key={image.src} className="gallery-frame">
-                <img src={image.src} alt={image.alt} />
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  style={{ objectPosition: image.imagePosition }}
+                />
                 <div className="gallery-copy-panel">
                   <h3>{image.title}</h3>
                   <p>{image.copy}</p>

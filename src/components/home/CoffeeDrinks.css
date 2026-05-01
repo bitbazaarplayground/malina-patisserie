@@ -37,8 +37,11 @@
 }
 
 .drinks-band-media {
+  width: min(100%, 540px);
+  justify-self: end;
   overflow: hidden;
-  min-height: 420px;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
   border-radius: 8px;
 }
 
@@ -47,7 +50,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 58%;
 }
 
 @media (max-width: 1120px) {
@@ -56,7 +59,14 @@
   }
 
   .drinks-band-media {
+    width: 100%;
+    justify-self: stretch;
+    aspect-ratio: auto;
     min-height: 360px;
+  }
+
+  .drinks-band-media img {
+    object-position: center;
   }
 }
 

@@ -10,7 +10,7 @@ import {
 } from "./cakeData";
 
 const navigation = [
-  { label: "Brunch", href: "/?intro=skip#experiences" },
+  { label: "Home", href: "/?intro=skip#top" },
   { label: "Menu", href: "/menu/" },
   { label: "Cakes", href: "#cake-list" },
   { label: "Visit", href: "#cake-enquiry" },

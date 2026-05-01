@@ -200,6 +200,16 @@ section[id] {
   object-fit: cover;
 }
 
+.experience-media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.experience-media img {
+  object-position: var(--experience-image-position-desktop, center);
+}
+
 .hero-image {
   position: absolute;
   inset: 0;
@@ -619,13 +629,13 @@ section[id] {
 
 .experience-layout {
   display: grid;
-  grid-template-columns: minmax(320px, 1.12fr) minmax(0, 0.88fr);
+  grid-template-columns: minmax(280px, 0.94fr) minmax(0, 1.06fr);
   gap: 28px;
   align-items: stretch;
 }
 
 .experience-row-reverse .experience-layout {
-  grid-template-columns: minmax(0, 0.88fr) minmax(320px, 1.12fr);
+  grid-template-columns: minmax(0, 1.06fr) minmax(280px, 0.94fr);
 }
 
 .experience-row-reverse .experience-media {
@@ -637,7 +647,7 @@ section[id] {
 }
 
 .experience-media {
-  min-height: 540px;
+  min-height: 500px;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -696,8 +706,6 @@ section[id] {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
-  width: min(1320px, calc(100% - 48px));
-  margin: 0 auto;
 }
 
 .cake-enquiry-panel {
@@ -799,7 +807,10 @@ section[id] {
   min-height: 0;
   aspect-ratio: 3 / 4;
   overflow: hidden;
+  border: 1px solid rgba(245, 238, 232, 0.08);
   border-radius: 8px;
+  background: rgba(8, 14, 11, 0.34);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 .gallery-frame::after {
@@ -819,6 +830,23 @@ section[id] {
   bottom: 18px;
   left: 18px;
   z-index: 1;
+}
+
+.gallery-frame img {
+  transition: transform 260ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery-frame:hover {
+    z-index: 1;
+    transform: translateY(-6px) scale(1.018);
+    border-color: rgba(245, 238, 232, 0.18);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.24);
+  }
+
+  .gallery-frame:hover img {
+    transform: scale(1.05);
+  }
 }
 
 .visit-section {
@@ -951,6 +979,13 @@ section[id] {
   .experience-row-reverse .experience-media,
   .experience-row-reverse .experience-copy {
     order: initial;
+  }
+
+  .experience-media img {
+    object-position: var(
+      --experience-image-position-mobile,
+      var(--experience-image-position-desktop, center)
+    );
   }
 
   .gallery-strip {
